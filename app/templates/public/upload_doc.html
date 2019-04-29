@@ -15,7 +15,7 @@
         <label for="formGroupExampleInput2">Document body</label>
         <input type="text" class="form-control" id="body" name="body" placeholder="">
     </div>
-    {% if feedback%}
+    {% if feedback %}
     <div class="alert alert-primary" role="alert">
         {{ feedback }}
     </div>
@@ -24,5 +24,11 @@
     <button type="submit" class="btn btn-primary">Upload</button>
 
 </form>
+
+{% if result_clean %}
+<div class="alert alert-primary" role="alert">
+    {{ result_clean }}
+</div>
+{% endif %}
 
 {% endblock %}

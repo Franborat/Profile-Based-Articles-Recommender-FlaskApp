@@ -17,7 +17,7 @@
 
       <h4>Looping through an iterable</h4>
       <hr>
-      
+
       <strong class="d-block mb-3">Programming languages</strong>
       <ul>
         {% for lang in langs %}
@@ -27,7 +27,7 @@
 
       <h4>Looping and enumerating an iterable</h4>
       <hr>
-      
+
       <strong class="d-block mb-3">Programming languages</strong>
       <ul>
         {% for lang in langs %}
@@ -37,18 +37,18 @@
 
       <h4>Looping key/value pairs in a dict</h4>
       <hr>
-      
+
       <strong class="d-block mb-3">Friends & ages</strong>
       <ul>
         {% for name, age in friends.items() %}
         <li>{{ name }}: {{ age }}</li>
         {% endfor %}
       </ul>
-      
+
       <h4>List index</h4>
       <hr>
       <p>{{ langs[0] }}</p>
-      
+
       <h4>Dictionary value</h4>
       <hr>
       <p>{{ friends["Tony"] }}</p>
@@ -69,7 +69,7 @@
           domain="https://github.com/Julian-Nash/learning-flask.git") 
       %}
       <p>{{ new_repo.description }}</p>
-      
+
       <h4>Unpack variables</h4>
       <hr>
       {% set foo, bar = colors %}
@@ -79,7 +79,7 @@
       <h4>Conditional if</h4>
       <hr>
       {% if cool %}
-        <p>Cool = {{ cool }}</p>
+      <p>Cool = {{ cool }}</p>
       {% endif %}
 
       <h4>Conditional if/elif</h4>
@@ -99,13 +99,13 @@
       <h4>Filters & conditionals</h4>
       <hr>
       {% if langs|length > 2 %}
-        {% for lang in langs %}
-          {% if lang == "Python" %}
-            <p>{{ lang|upper }}</p>
-          {% else %}
-            <p>{{ lang|reverse }}</p>
-          {% endif %}
-        {% endfor %}
+      {% for lang in langs %}
+      {% if lang == "Python" %}
+      <p>{{ lang|upper }}</p>
+      {% else %}
+      <p>{{ lang|reverse }}</p>
+      {% endif %}
+      {% endfor %}
       {% endif %}
 
       <h4>Join filter</h4>
