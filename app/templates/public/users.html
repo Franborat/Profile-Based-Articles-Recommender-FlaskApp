@@ -1,0 +1,102 @@
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Users</h1>
+    </div>
+  </div>
+</div>
+
+
+<form class='form-inline'>
+
+
+  {% for user in users %}
+  {% set data = user[0] %}
+  {% set interests = user[1] %}
+
+  <div class="card" style="width:300px">
+    <img class="card-img-top" src="{{ url_for('static', filename='img/img_avatar1.png') }}" alt="Card image">
+    <div class="card-body">
+
+
+      <h4 class="card-title">{{data[0]}}</h4>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Contact: {{data[1]}}</li>
+        <li class="list-group-item">Interests:
+          {% for interest in interests %}
+          {{ interest }}
+          {% endfor %}
+        <li class="list-group-item">Suggested texts:</li>
+        {% for interest in interests %}
+
+        {%if interest in corpus %}
+        <li class="list-group-item">{{interest}}:</li>
+        {% for doc in corpus[interest] %}
+        <li class="list-group-item">
+          <form action="/home" method="POST"></form>
+          <button href="/home" type="submit" class="btn btn-link">{{doc[0]}}</button>
+          </form>
+        </li>
+
+        {% endfor %}
+        {% endif %}
+
+
+
+        {% endfor %}
+      </ul>
+
+    </div>
+  </div>
+  {% endfor %}
+
+
+</form>
+
+
+{% endblock %}
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+The maximum idf score is for blog, with : 8.144275627337986
+The minimum idf score is for said, with : 2.79320769540442
+
+{'union': 4652, 'repres': 3620, 'worker': 4904, 'turner': 4612, 'say': 3812, 'talk': 4368, 'parent': 3131, 'firm': 1589,
+'feder': 1528, 'space': 4120
+
+Accuracy of svc linear: 0.835
+
+Accuracy of adaboost: 0.712004256869107
+
+Accuracy of nb gaussian/multinomial/bernoulli: 0.765/0.837/0.834
+Accuracy of nb multinomial:
+0.8378254765977757
+Accuracy of nb bernoulli:
+0.8348684663240367
+
+Accuracy of mlp: 0.743
