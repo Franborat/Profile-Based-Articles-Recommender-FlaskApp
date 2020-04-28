@@ -153,7 +153,7 @@ def users():
     with open('app/model/users.pickle', 'rb') as f:
         users = pickle.load(f)
 
-    users = users[0:2]
+    users = users[0:len(users)]
 
         # pickle - saving
     with open('app/model/users.pickle', 'wb') as f:
