@@ -13,7 +13,7 @@
 </div>
 
 
-<form class='form-inline'>
+{#<form class='form-inline'>
 
 
   {% for user in users %}
@@ -57,7 +57,60 @@
   {% endfor %}
 
 
-</form>
+</form>#}
+
+
+
+
+        <div class="card-group">
+
+            {% for user in users %}
+                {% set data = user[0] %}
+                {% set interests = user[1] %}
+
+                <div class="card" style="width:300px">
+                    <img class="card-img-top" src="{{ url_for('static', filename='img/img_avatar1.png') }}" alt="Card image">
+                    <div class="card-body">
+
+
+                        <h4 class="card-title">{{data[0]}}</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Contact: {{data[1]}}</li>
+                            <li class="list-group-item">Interests:
+                                {% for interest in interests %}
+                                    {{ interest }}
+                                {% endfor %}
+                            <li class="list-group-item">Suggested texts:</li>
+                            {% for interest in interests %}
+
+                                {%if interest in corpus %}
+                                    <li class="list-group-item">{{interest}}:</li>
+                                    {% for doc in corpus[interest] %}
+                                        <li class="list-group-item">
+                                            <form action="/home" method="POST"></form>
+                                            <button href="/home" type="submit" class="btn btn-link">{{doc[0]}}</button>
+                                        </form>
+                                        </li>
+
+                                    {% endfor %}
+                                {% endif %}
+
+
+
+                            {% endfor %}
+
+                </ul>
+
+
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-outline-danger">Delete</a>
+                </div>
+
+                </div>
+            {% endfor %}
+    </div>
+
 
 
 {% endblock %}
@@ -77,6 +130,10 @@
     </div>
   </div>
 </div>
+
+
+
+
 
 
 
